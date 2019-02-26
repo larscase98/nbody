@@ -1,5 +1,4 @@
 class Body {
-
 	x;
 	y;
 	xVel;
@@ -8,14 +7,19 @@ class Body {
 	radius;
 	color;
 
-	constructor(x, y, xVel, yVel, mass, color = '#33cc11') {
+	trailCoords; // Coordinates for trail lines.
 
+	constructor(x, y, xVel, yVel, mass, color = '#a8ce4e', trailColor = '#aeed9a') {
 		this.x = x;
 		this.y = y;
 		this.xVel = xVel;
 		this.yVel = yVel;
 		this.mass = mass;
 		this.color = color;
+		this.trailCoords = []; // Will contain arrays of [x, y] values.
+		this.trailColor = trailColor;
+
+		this.trailMaxLength = 40;
 
 		this.radius = this.radiusFactor(1000);
 	}
@@ -27,5 +31,13 @@ class Body {
 	tick() {
 		this.x += this.xVel;
 		this.y += this.yVel;
+	}
+
+	addTrailPoint(newPoint) {
+		this.trailCoords.unshift(newPoint);
+
+		while (this.trailCoords.length > this.trailMaxLength) {
+			this.trailCoords.pop();
+		}
 	}
 }

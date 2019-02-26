@@ -88,3 +88,13 @@ $font: #f9f5ea;
 		}
 	}
 }
+
+#hintbox {
+	position: fixed;
+	bottom: 1em;
+	left: 1em;
+	padding: 10px 12px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 5px;
+	border: 2px solid $font;
+}

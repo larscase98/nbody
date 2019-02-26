@@ -113,4 +113,14 @@
 #sidebar .panel .row > * {
   margin: 0 4px;
 }
+
+#hintbox {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  padding: 10px 12px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 5px;
+  border: 2px solid #f9f5ea;
+}
 /*# sourceMappingURL=core.css.map */

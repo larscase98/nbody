@@ -25,15 +25,24 @@
 					<h3>add a body</h3>
 					<div class="row">
 						<label for="newBody_mass">mass (units)</label>
-						<input type="range" min="1" max="1000" value="1" oninput="newMassCallback(this.value)" name="newBody_mass" id="newBody_mass">
+						<input type="range" min="1" max="1000" value="1" oninput="newMassCallback(this.value)" name="newBody_mass" id="newBody_mass" />
 						<span id="newBody_mass_readout">1</span>
 					</div>
+				</div>
+				<div class="panel">
+					<h3>select a preset</h3>
+					<select>
+						<option value="lol" selected="selected">nothing here yet!</option>
+					</select>
 				</div>
 			</aside>
 		</div>
 
 		<!-- More 'randomly' placed items... tooltips, hints, etc. -->
-		<div id="hintbox"></div>
+		<div id="hintbox">
+			<p>select a mass on the right, and then click anywhere on the left start placing a body. the line is the trajectory and speed, so click again to send it.</p>
+			<p>just double click for a stationary object.</p>
+		</div>
 		<!-- for hovering over tool buttons, etc. -->
 		<div id="bodyDetails"></div>
 		<!-- for customizing the selected body -->
