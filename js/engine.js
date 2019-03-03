@@ -27,6 +27,11 @@ window.onload = () => {
 	init();
 };
 
+window.onresize = () => {
+	DOM.canvas.setAttribute = ('width', $("#canvas").innerWidth());
+	DOM.canvas.setAttribute = ('height', $("#canvas").innerHeight());
+}
+
 function init() {
 	SIM.bodies = [];
 
@@ -62,15 +67,18 @@ function tick() {
 			//Drawing trails
 			DOM.ctx.strokeStyle = body.trailColor;
 			DOM.ctx.moveTo(body.x - offset, body.y - offset);
-			body.trailCoords.forEach(pair => {
+
+			for(let i = 0; i < body.trailCoords.length; i += 10) {
+				let pair = body.trailCoords[i];
 				DOM.ctx.lineTo(pair[0] - offset, pair[1] - offset);
 				DOM.ctx.stroke();
 				DOM.ctx.moveTo(pair[0] - offset, pair[1] - offset);
-			});
+			}
 
 			// Draw actual body over the trail.
 			DOM.ctx.beginPath();
 			DOM.ctx.fillStyle = body.color;
+			DOM.ctx.strokeStyle = "rgba(0, 0, 0, 0)";
 			DOM.ctx.arc(body.x - offset, body.y - offset, radius, 0, Math.PI * 2);
 			DOM.ctx.fill();
 		});
@@ -159,8 +167,6 @@ function canvasClick(mouseEvent) {
 		let y = SIM.firstClickCoords[1];
 		let xVel = SIM.secondClickCoords[0] - SIM.firstClickCoords[0];
 		let yVel = SIM.secondClickCoords[1] - SIM.firstClickCoords[1];
-
-		console.log(`xvel = ${xVel}, yvel = ${yVel}`);
 
 		addBodyFromCoords(x, y, xVel / 200, yVel / 200);
 	}

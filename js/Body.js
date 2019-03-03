@@ -1,13 +1,4 @@
 class Body {
-	x;
-	y;
-	xVel;
-	yVel;
-	mass;
-	radius;
-	color;
-
-	trailCoords; // Coordinates for trail lines.
 
 	constructor(x, y, xVel, yVel, mass, color = '#a8ce4e', trailColor = '#aeed9a') {
 		this.x = x;
@@ -19,7 +10,7 @@ class Body {
 		this.trailCoords = []; // Will contain arrays of [x, y] values.
 		this.trailColor = trailColor;
 
-		this.trailMaxLength = 40;
+		this.trailMaxLength = 100; // Storing 100, but only showing every few dots for drawing speed.
 
 		this.radius = this.radiusFactor(1000);
 	}
